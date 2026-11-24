@@ -5,6 +5,7 @@ import Footer from './Footer.jsx';
 import { IconSprite } from './Icons.jsx';
 import ScrollUI from './ScrollUI.jsx';
 import StickyCta from './StickyCta.jsx';
+import WhatsAppButton from './WhatsAppButton.jsx';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -34,6 +35,7 @@ export default function Layout() {
       </main>
       <Footer />
       <StickyCta />
+      <WhatsAppButton />
     </>
   );
 }

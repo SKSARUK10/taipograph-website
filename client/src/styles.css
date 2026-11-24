@@ -106,3 +106,13 @@ input[aria-invalid="true"]{border-color:#d6336c}
 .panel li{animation:pgin .5s ease both}
 .panel li:nth-child(1){animation-delay:.15s}.panel li:nth-child(2){animation-delay:.3s}.panel li:nth-child(3){animation-delay:.45s}.panel li:nth-child(4){animation-delay:.6s}.panel li:nth-child(5){animation-delay:.75s}
 @media(prefers-reduced-motion:reduce){.view.on,.panel li{animation:none}.prog,.totop{transition:none}}
+
+/* ===== WhatsApp click-to-chat ===== */
+.wa{position:fixed;right:18px;bottom:18px;z-index:35;display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 16px 0 12px;border-radius:99px;background:#1fa855;color:#fff;font-weight:700;font-size:.88rem;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .2s,background .2s}
+.wa:hover{background:#178f48;transform:translateY(-2px)}
+.wai{width:22px;height:22px;margin:0;stroke:#fff}
+.totop{bottom:76px}
+@media(max-width:720px){
+ .wa{bottom:84px;width:46px;padding:0;justify-content:center}.wa span{display:none}
+ .totop{bottom:138px}
+}

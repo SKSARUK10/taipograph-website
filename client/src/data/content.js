@@ -8,6 +8,9 @@ export const SITE = {
   email: 'info@taipograph.com',
   phone: '+91 84790 50435',
   phoneHref: 'tel:+918479050435',
+  // WhatsApp click-to-chat. Digits only: country code + number, no + or spaces. Override with VITE_WHATSAPP_NUMBER.
+  whatsapp: (import.meta.env.VITE_WHATSAPP_NUMBER || '').replace(/\D/g, ''),
+  whatsappMessage: "Hello TAIPOGRAPH, I'd like to discuss a packaging project.",
   location: 'Kolkata, India',
   footerLeft: '© 2026 TAIPOGRAPH Premedia & Packaging · Kolkata, India',
   footerRight: 'Packaging prepress · Premedia · Production',

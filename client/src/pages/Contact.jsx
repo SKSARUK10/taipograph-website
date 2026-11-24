@@ -3,8 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { CONTACT, SEO, SITE } from '../data/content.js';
 import useSeo from '../hooks/useSeo.js';
 import { Icon } from '../components/Icons.jsx';
-import { ALLOWED_EXT, ApiError, MAX_MB, checkFile, submitEnquiry } from '../lib/api.js';
+import { ALLOWED_EXT, ApiError, MAX_MB, checkFile, submitEnquiry, warmUpApi } from '../lib/api.js';
 import { openMailto, sendEmailJs } from '../lib/email.js';
+import { whatsappHref } from '../lib/whatsapp.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const EMPTY = { name: '', email: '', company: '', service: CONTACT.services[0].value, message: '', website: '' };
@@ -23,6 +24,9 @@ export default function Contact() {
   const [copied, setCopied] = useState(false);
   const fileInput = useRef(null);
   const live = useRef(null);
+
+  // Free hosts put the API to sleep; wake it as soon as someone opens the form.
+  useEffect(() => { warmUpApi(); }, []);
 
   // Links elsewhere on the site use /contact?service=preflight etc.
   useEffect(() => {
@@ -134,6 +138,8 @@ export default function Contact() {
               </button>
               <br />
               <a href={SITE.phoneHref}>{SITE.phone}</a>
+              <br />
+              <a href={whatsappHref()} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
               <br />
               <span style={{ color: 'var(--mute)' }}>{CONTACT.intro.location}</span>
             </p>

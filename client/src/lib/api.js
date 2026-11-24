@@ -51,3 +51,8 @@ export async function submitEnquiry(fields, file) {
   }
   return data; // { ok: true, ref: 'TPG-...' }
 }
+
+/** Wakes a sleeping free-tier API (Render) while the visitor is still filling in the form. Fire-and-forget. */
+export function warmUpApi() {
+  fetch(`${API}/health`, { method: 'GET', cache: 'no-store' }).catch(() => {});
+}
